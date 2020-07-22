@@ -1,0 +1,18 @@
+version: "3"
+services:
+  wireguard:
+    build: .
+    command: 
+    volumes:
+      - data:/etc/wireguard
+    networks:
+      - net
+    ports:
+      - 5555:5555/udp
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+
+networks:
+  net:
